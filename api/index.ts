@@ -10,9 +10,9 @@ const app: Express = express();
 
 app.use(
   cors({
-    origin: "*",
+    origin: ["https://nasa-front-sand.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
 const port = process.env.PORT || 3000;
