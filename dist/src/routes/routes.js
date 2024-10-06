@@ -58,7 +58,9 @@ router.get("/events", (req, res) => __awaiter(void 0, void 0, void 0, function* 
         const categoryIds = req.query.categoryIds
             ? req.query.categoryIds.split(",").map(Number)
             : [];
-        const response = yield axios_1.default.get(EONET_API_URL + "/events");
+        const response = yield axios_1.default.get(EONET_API_URL + "/events", {
+            timeout: 5000,
+        });
         let events = response.data.events;
         if (categoryIds.length > 0) {
             events = events.filter((event) => event.categories.some((category) => categoryIds.includes(Number(category.id))));
@@ -77,7 +79,9 @@ router.get("/events-by-continent", (req, res) => __awaiter(void 0, void 0, void 
         if (!continent) {
             return res.status(400).json({ error: "Continent parameter is required" });
         }
-        const response = yield axios_1.default.get(EONET_API_URL + "/events");
+        const response = yield axios_1.default.get(EONET_API_URL + "/events", {
+            timeout: 5000,
+        });
         const events = response.data.events;
         const filteredEvents = events.filter((event) => {
             const { geometries } = event;
@@ -95,7 +99,9 @@ router.get("/events-by-continent", (req, res) => __awaiter(void 0, void 0, void 
 //GET EVENTS COUNT
 router.get("/events-count", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const response = yield axios_1.default.get(EONET_API_URL + "/events");
+        const response = yield axios_1.default.get(EONET_API_URL + "/events", {
+            timeout: 2000,
+        });
         const events = response.data.events;
         const categoryCounts = {};
         let totalEvents = 0;
