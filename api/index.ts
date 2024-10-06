@@ -8,11 +8,17 @@ dotenv.config();
 
 const app: Express = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 const port = process.env.PORT || 3000;
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Express + TypeScript Server 000");
+  res.send("SERVER");
 });
 
 app.use(express.json());
