@@ -11,9 +11,9 @@ dotenv_1.default.config();
 // console.log(process.env);
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: "*",
+    origin: ["https://nasa-front-sand.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
 }));
 const port = process.env.PORT || 3000;
 app.get("/", (req, res) => {

@@ -10,7 +10,7 @@ const app: Express = express();
 
 app.use(
   cors({
-    origin: ["https://nasa-front-sand.vercel.app"],
+    origin: process.env.FRONTEND_URL || "https://nasa-front-sand.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
