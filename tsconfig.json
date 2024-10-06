@@ -108,6 +108,7 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "include": [
+    "api/src/routes/routes",
     "api/**/*.ts", // Include all TypeScript files in "api" folder
     "api/src/**/*.ts" // Include all TypeScript files in "src" folder
   ],
