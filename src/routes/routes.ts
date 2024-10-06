@@ -27,16 +27,6 @@ const getContinentFromCoords = (lat: number, lon: number): string => {
   return "Unknown";
 };
 
-// router.get("/img", async (req: Request, res: Response) => {
-//   try {
-//     const apiUrl = `${URL}${APOD_URL}?api_key=${API_KEY}`;
-//     const response = await axios.get(apiUrl);
-//     res.json(response.data);
-//   } catch (error) {
-//     res.status(500).send("Failed to fetch data");
-//   }
-// });
-
 //GET ALL CATEGORIES
 router.get("/categories", async (req: Request, res: Response) => {
   try {
