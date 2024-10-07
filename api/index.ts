@@ -4,15 +4,14 @@ import routes from "./src/routes/routes";
 import cors from "cors";
 
 dotenv.config();
-// console.log(process.env);
 
 const app: Express = express();
 
 app.use(
   cors({
-    origin: ["https://nasa-front-sand.vercel.app"],
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 const port = process.env.PORT || 3000;
