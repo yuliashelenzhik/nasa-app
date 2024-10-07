@@ -45,9 +45,7 @@ router.get("/events", async (req: Request, res: Response) => {
       ? (req.query.categoryIds as string).split(",").map(Number)
       : [];
 
-    const response = await axios.get(EONET_API_URL + "/events", {
-      timeout: 5000,
-    });
+    const response = await axios.get(EONET_API_URL + "/events");
 
     let events = response.data.events;
 
@@ -74,9 +72,7 @@ router.get("/events-by-continent", async (req: Request, res: Response) => {
       return res.status(400).json({ error: "Continent parameter is required" });
     }
 
-    const response = await axios.get(EONET_API_URL + "/events", {
-      timeout: 5000,
-    });
+    const response = await axios.get(EONET_API_URL + "/events");
     const events = response.data.events;
 
     const filteredEvents = events.filter((event: any) => {
@@ -97,9 +93,7 @@ router.get("/events-by-continent", async (req: Request, res: Response) => {
 //GET EVENTS COUNT
 router.get("/events-count", async (req: Request, res: Response) => {
   try {
-    const response = await axios.get(EONET_API_URL + "/events", {
-      timeout: 2000,
-    });
+    const response = await axios.get(EONET_API_URL + "/events");
     const events = response.data.events;
 
     const categoryCounts: { [key: number]: { title: string; count: number } } =
